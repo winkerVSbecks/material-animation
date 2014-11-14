@@ -19,12 +19,12 @@
 
     <!-- Album -->
     <div class="album"
-      ng-click="toggleCover($event)"
+      ng-click="animating || toggleCover($event)"
       ng-class="state">
         <!-- Album Cover -->
         <div class="cover"></div>
         <!-- UI Card -->
-        <div class="ui"></div>
+        <div class="ui" ng-class="state"></div>
     </div>
 
     <!-- scripts -->

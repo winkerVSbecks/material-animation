@@ -8,16 +8,22 @@ angular.module('materialApp', [
   '$document',
 function($scope, $sniffer, $document, $window) {
 
-  $scope.state = 'right';
+  $scope.state = 'collapsed';
 
   $scope.toggleCover = function(e) {
-    if ($scope.state === 'right') {
-      $scope.state = 'left';
+    if ($scope.state === 'collapsed') {
+      $scope.state = 'full';
+      $scope.animating = true;
       createRipple(e.currentTarget);
     } else {
-      $scope.state = 'right';
+      $scope.state = 'collapsed';
+      $scope.animating = true;
       undoRipple(e.currentTarget);
     }
+
+    e.currentTarget.addEventListener('transitionend', function() {
+      $scope.animating = false;
+    }, true);
   };
 
 }]);
@@ -70,7 +76,7 @@ var undoRipple = function(target) {
   animate.setAttribute('attributeName', 'r');
   animate.setAttribute('from', '200%');
   animate.setAttribute('to', '0');
-  animate.setAttribute('dur', '1200ms');
+  animate.setAttribute('dur', '900ms');
   animate.setAttribute('fill', 'freeze');
 
   circle.appendChild(animate);
