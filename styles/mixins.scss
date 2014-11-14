@@ -1,0 +1,34 @@
+// ----------------------
+// Mixins
+// ----------------------
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+
+@mixin animation($name, $time) {
+  -webkit-animation: $name $time infinite;
+     -moz-animation: $name $time infinite;
+       -o-animation: $name $time infinite;
+          animation: $name $time infinite;
+}
+
+
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $method $transition-time;
+       -moz-transition: $transition-property $method $transition-time;
+        -ms-transition: $transition-property $method $transition-time;
+         -o-transition: $transition-property $method $transition-time;
+            transition: $transition-property $method $transition-time;
+}
