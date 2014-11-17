@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="100%" width="100%">
+      <image x="-12.5%" y="-12.5%" width="125%" height="125%" xlink:href="/img/pharrell-williams.jpg"></image>
+      <rect x="0" y="0"
+        width="100%" height="100%"
+        fill="#F0B80F">
+          <!-- Fade out -->
+          <animate id="ripple-bg"
+                   attributeType="XML"
+                   begin="indefinite"
+                   attributeName="opacity"
+                   from="1"
+                   to="0"
+                   dur="600ms"
+                   fill="freeze" />
+          <!-- Reset opacity -->
+          <animate id="ripple-bg-undo"
+                   attributeType="XML"
+                   begin="indefinite"
+                   attributeName="opacity"
+                   from="1"
+                   to="1"
+                   dur="0ms"
+                   fill="freeze" />
+      </rect>
+    </pattern>
+  </defs>
+
+  <circle cx="50%" cy="50%" r="0" fill="url(#image)">
+    <!-- Expand out -->
+    <animate id="ripple-open"
+             attributeType="XML"
+             begin="indefinite"
+             attributeName="r"
+             from="0"
+             to="200%"
+             dur="600ms"
+             fill="freeze" />
+    <!-- Collapse in -->
+    <animate id="ripple-close"
+             attributeType="XML"
+             begin="indefinite"
+             attributeName="r"
+             from="200%"
+             to="0"
+             dur="800ms"
+             fill="freeze" />
+  </circle>
+</svg>
+
+<div class="album"
+  ng-click="animating || toggleCover($event)"
+  ng-class="state">
+    <!-- Album Cover -->
+    <div class="cover"></div>
+    <!-- UI Card -->
+    <div class="ui" ng-class="state">
+      <h1>G I R L</h1>
+      <p>Pharell Williams</p>
+    </div>
+</div>

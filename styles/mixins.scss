@@ -1,3 +1,10 @@
+%center-align {
+  -webkit-transform: translate3D(-50%, -50%, 0);
+     -moz-transform: translate3D(-50%, -50%, 0);
+      -ms-transform: translate3D(-50%, -50%, 0);
+          transform: translate3D(-50%, -50%, 0);
+}
+
 // ----------------------
 // Mixins
 // ----------------------
@@ -202,3 +209,6 @@
     }
   }
 }
+
+
+
