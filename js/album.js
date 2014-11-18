@@ -10,6 +10,7 @@ angular.module('materialApp.directives')
 
     $scope.state = 'collapsed';
     $scope.sticky = false;
+    var doRipple = true;
 
     var cover = $element.find('div')[0];
 
@@ -31,26 +32,34 @@ angular.module('materialApp.directives')
     $scope.toggleCover = function(e) {
       // Expand
       if ($scope.state === 'collapsed') {
-
         $scope.state = 'full';
         $scope.sticky = true;
         $scope.animating = true;
-        rippleOpen.beginElement();
+
+        if (doRipple) {
+          rippleOpen.beginElement();
+        }
 
         // Fade in the artist photo
         $timeout(function() {
-          rippleBg.beginElement();
+          if (doRipple) {
+            rippleBg.beginElement();
+          }
         }, 500);
 
       } else {
         // Collapse
         $scope.state = 'collapsed';
         $scope.animating = true;
-        rippleClose.beginElement();
+        if (doRipple) {
+          rippleClose.beginElement();
+        }
 
         // Reset the color block
         $timeout(function() {
-          rippleBgUndo.beginElement();
+          if (doRipple) {
+            rippleBgUndo.beginElement();
+          }
         }, 800);
       }
 

@@ -5,6 +5,12 @@
           transform: translate3D(-50%, -50%, 0);
 }
 
+%optimize {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+      -webkit-transform-style: preserve-3d;
+}
+
 // ----------------------
 // Mixins
 // ----------------------

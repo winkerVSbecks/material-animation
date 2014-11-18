@@ -1,8 +1,6 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-     xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg>
   <defs>
-    <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="100%" width="100%">
+    <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="100%" width="100%" repeat="no-repeat">
       <image x="-12.5%" y="-12.5%" width="125%" height="125%" xlink:href="/img/pharrell-williams.jpg"></image>
       <rect x="0" y="0"
         width="100%" height="100%"
@@ -29,7 +27,7 @@
     </pattern>
   </defs>
 
-  <circle cx="50%" cy="50%" r="0" fill="url(#image)">
+  <circle cx="50%" cy="50%" r="0" fill="url(#image)" style="tranform: translateZ(0);">
     <!-- Expand out -->
     <animate id="ripple-open"
              attributeType="XML"
@@ -55,7 +53,9 @@
   ng-click="animating || toggleCover($event)"
   ng-class="state">
     <!-- Album Cover -->
-    <div class="cover"></div>
+    <div class="cover">
+      <img src="/img/girl.jpg"/>
+    </div>
     <!-- UI Card -->
     <div class="ui" ng-class="state">
       <h1>G I R L</h1>
