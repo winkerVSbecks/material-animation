@@ -3,7 +3,7 @@
 // ----------------------
 // Variables
 // ----------------------
-$grey: #111210;
+$black: #222;
 $yellow: #F5BC0B;
 $white: #FBFCFA;
 $pink: #F31F69;
@@ -11,6 +11,10 @@ $grey: #808280;
 
 $album-width: 80%;
 $player-height: 64px;
+
+$z-index-svg: 999;
+$z-index-album: 1000;
+$z-index-player: 1001;
 
 // ----------------------
 // Global
@@ -27,7 +31,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-  background-color: #ccc;
+  background-color: #000;
   color: #444;
   font-family: 'Roboto', sans-serif;
 }
@@ -42,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 header {
   padding-left: 6.5%;
   padding-right: 6.5%;
-  background-color: $grey;
+  background-color: $black;
   overflow: hidden;
 }
 
@@ -63,15 +67,18 @@ header h1 {
 .album {
   // box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
   transition: transform cubic-bezier(0.455, 0.03, 0.515, 0.955) 900ms,
-              width cubic-bezier(0.455, 0.03, 0.515, 0.955) 600ms,
+              // width cubic-bezier(0.455, 0.03, 0.515, 0.955) 600ms,
               box-shadow 0 0s;
-  bottom: 5px;
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  clear: both;
+  // position: relative;
+  // display: block;
+  width: 25vw;
+  height: 25vw;
+  // overflow: hidden;
+  // clear: both;
+  float: left;
+  transform-origin: left top;
 
-  transform: translate3d(70vw, 0, 0);
+  // transform: translate3d(70vw, 0, 0);
   transition-delay: 0s, 0s, 0s;
 
   -webkit-backface-visibility: hidden;
@@ -79,7 +86,7 @@ header h1 {
 
   &.full {
     // box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-    transform: translate3d(12.5vw, -59px, 0);
+    // transform: translate3d(12.5vw, -59px, 0);
     transition-delay: 0s, 200ms, 1500ms;
   }
 }
@@ -91,7 +98,13 @@ header h1 {
   cursor: pointer;
   width: 25vw;
   height: 25vw;
+  padding-top: 0.25vw;
+  padding-left: 0.25vw;
   overflow: hidden;
+
+  &.end {
+    padding-right: 0.25vw;
+  }
 
   img {
     width: 100%;
@@ -138,7 +151,7 @@ header h1 {
 // Ripple
 // ----------------------
 svg {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -155,7 +168,7 @@ circle {
 // Player
 // ----------------------
 .player {
-  position: absolute;
+  position: fixed;
   left: 12.5%;
   bottom: 0px;
   width: 75%;
@@ -163,6 +176,7 @@ circle {
   background-color: $white;
   border-top: 4px solid $pink;
   @extend %optimize;
+  z-index: $z-index-player;
 
   .album-art {
     width: $player-height - 4px;

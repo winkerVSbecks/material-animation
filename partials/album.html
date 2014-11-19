@@ -1,4 +1,4 @@
-<svg>
+<svg ng-class="state">
   <defs>
     <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="100%" width="100%" repeat="no-repeat">
       <image x="-12.5%" y="-12.5%" width="125%" height="125%" xlink:href="/img/pharrell-williams.jpg"></image>
@@ -53,7 +53,7 @@
   ng-click="animating || toggleCover($event)"
   ng-class="state">
     <!-- Album Cover -->
-    <div class="cover">
+    <div class="cover end">
       <img src="/img/girl.jpg"/>
     </div>
     <!-- UI Card -->

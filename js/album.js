@@ -13,6 +13,7 @@ angular.module('materialApp.directives')
     var doRipple = true;
 
     var cover = $element.find('div')[0];
+    var svg = $element.find('svg')[0];
 
     var offsets = cover.getBoundingClientRect();
     var x = offsets.left + offsets.width/2;
@@ -29,43 +30,82 @@ angular.module('materialApp.directives')
     var rippleBg = document.getElementById('ripple-bg');
     var rippleBgUndo = document.getElementById('ripple-bg-undo');
 
+    var h = document.body.clientHeight;
+    var w = document.body.clientWidth;
+
+    var coverClone = null;
+
+    var expand = function() {
+      coverClone = cover.cloneNode(true);
+      $element[0].appendChild(coverClone);
+      coverClone.onclick = collapse;
+
+      coverClone.setAttribute('style',
+        'position: fixed; top:' + cover.offsetTop + 'px; ' +
+        'left:' + cover.offsetLeft + 'px; ' +
+        'transform: translate3d(' +
+          (-cover.offsetLeft - 0.0025*w + 0.125*w) + 'px,' +
+          (h - cover.offsetTop - offsets.height + 0.0025*w - 64) + 'px,0); ' +
+        'z-index: 1000; '
+      );
+      cover.style.visibility = 'hidden';
+      svg.setAttribute('style', 'z-index: 999;');
+
+      $scope.state = 'full';
+      $scope.sticky = true;
+      $scope.animating = true;
+
+      if (doRipple) {
+        rippleOpen.beginElement();
+      }
+
+      // Fade in the artist photo
+      $timeout(function() {
+        if (doRipple) {
+          rippleBg.beginElement();
+        }
+      }, 500);
+    };
+
+    var collapse = function() {
+      // Collapse
+      $scope.state = 'collapsed';
+      $scope.animating = true;
+      if (doRipple) {
+        rippleClose.beginElement();
+      }
+
+      coverClone.setAttribute('style',
+        'position: absolute; top:' + cover.offsetTop + 'px; ' +
+        'left:' + cover.offsetLeft + 'px; ' +
+        'z-index: 1000; '
+      );
+      // Reset the color block
+      $timeout(function() {
+        if (doRipple) {
+          rippleBgUndo.beginElement();
+          coverClone.setAttribute('style', '');
+          cover.style.visibility = 'visible';
+          svg.setAttribute('style', '');
+          $element[0].removeChild(coverClone);
+        }
+      }, 1200);
+    };
+
     $scope.toggleCover = function(e) {
       // Expand
       if ($scope.state === 'collapsed') {
-        $scope.state = 'full';
-        $scope.sticky = true;
-        $scope.animating = true;
-
-        if (doRipple) {
-          rippleOpen.beginElement();
-        }
-
-        // Fade in the artist photo
-        $timeout(function() {
-          if (doRipple) {
-            rippleBg.beginElement();
-          }
-        }, 500);
-
+        expand();
       } else {
-        // Collapse
-        $scope.state = 'collapsed';
-        $scope.animating = true;
-        if (doRipple) {
-          rippleClose.beginElement();
-        }
-
-        // Reset the color block
-        $timeout(function() {
-          if (doRipple) {
-            rippleBgUndo.beginElement();
-          }
-        }, 800);
+        collapse();
       }
 
-      e.currentTarget.addEventListener('transitionend', function() {
-        $scope.animating = false;
-      }, true);
+      if (!$scope.didAttachListener) {
+        e.currentTarget.addEventListener('transitionend', function() {
+          $scope.animating = false;
+          $scope.didAttachListener = true;
+        }, true);
+      }
     };
   }])
   .directive('album', [function () {
