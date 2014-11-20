@@ -11,6 +11,7 @@ angular.module('materialApp.directives')
     $scope.blockColor = $scope.$eval($attrs.color);
     $scope.end = $scope.$eval($attrs.end);
     $scope.cover = $scope.$eval($attrs.cover);
+    $scope.artist = $scope.$eval($attrs.artist);
 
     $scope.state = 'collapsed';
     $scope.sticky = false;

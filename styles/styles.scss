@@ -66,7 +66,7 @@ header h1 {
 // Album
 // ----------------------
 .album {
-  // box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
   transition: transform cubic-bezier(0.455, 0.03, 0.515, 0.955) 900ms,
               // width cubic-bezier(0.455, 0.03, 0.515, 0.955) 600ms,
               box-shadow 0 0s;
@@ -138,14 +138,14 @@ header h1 {
     @include transition-delay(0ms);
   }
 
-  &.full {
-    transform: scale3d(1, 1, 1);
+  // &.full {
+  //   transform: scale3d(1, 1, 1);
 
-    h1, p {
-      opacity: 1;
-      @include transition-delay(600ms);
-    }
-  }
+  //   h1, p {
+  //     opacity: 1;
+  //     @include transition-delay(600ms);
+  //   }
+  // }
 }
 
 
@@ -159,11 +159,10 @@ svg {
   width: 100%;
   height: 100%;
   @extend %optimize;
-  pointer-events: none;
-  // display: none;
+  display: none;
 
   &.full {
-    // display: inherit;
+    display: inherit;
   }
 }
 circle {

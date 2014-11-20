@@ -12,40 +12,52 @@ function($scope, $sniffer, $document, $window) {
   };
 
   vm.albums = [{
-    cover: '/img/caribou.jpg',
-    color: '#8DC384'
+    artist: '/img/artists/caribou.jpg',
+    cover: '/img/albums/caribou.jpg',
+    color: '#F0EC9D'
   }, {
-    cover: '/img/dive.jpg',
+    artist: '/img/artists/tycho.jpg',
+    cover: '/img/albums/dive.jpg',
     color: '#758978'
   }, {
-    cover: '/img/fmbelfast.jpg',
+    artist: '/img/artists/fmbelfast.jpg',
+    cover: '/img/albums/fmbelfast.jpg',
     color: '#DD5C56'
   }, {
-    cover: '/img/jamiexx.jpg',
+    artist: '/img/artists/jamiexx.jpg',
+    cover: '/img/albums/jamiexx.jpg',
     color: '#FE8F00'
   }, {
-    cover: '/img/goldpanda.jpg',
+    artist: '/img/artists/goldpanda.jpg',
+    cover: '/img/albums/goldpanda.jpg',
     color: '#009AC6'
   }, {
-    cover: '/img/wildbeasts.jpg',
+    artist: '/img/artists/wildbeasts.jpg',
+    cover: '/img/albums/wildbeasts.jpg',
     color: '#F7201D'
   }, {
-    cover: '/img/laroux.jpg',
+    artist: '/img/artists/laroux.jpg',
+    cover: '/img/albums/laroux.jpg',
     color: '#CBA135'
   }, {
-    cover: '/img/girl.jpg',
+    artist: '/img/artists/pharrellwilliams.jpg',
+    cover: '/img/albums/girl.jpg',
     color: '#F0B80F'
   }, {
-    cover: 'img/fourtet.jpg',
-    color: '#991D4F'
+    artist: 'img/artists/fourtet.jpg',
+    cover: 'img/albums/fourtet.jpg',
+    color: '#DFE4E2'
   }, {
-    cover: '/img/tycho1.jpg',
-    color: '#303C52'
+    artist: '/img/artists/tycho.jpg',
+    cover: '/img/albums/tycho.jpg',
+    color: '#D47765'
   }, {
-    cover: '/img/holyfuck.jpg',
-    color: '#323945'
+    artist: '/img/artists/holyfuck.jpg',
+    cover: '/img/albums/holyfuck.jpg',
+    color: '#C1CFE0'
   },{
-    cover: '/img/xx.jpg',
+    artist: '/img/artists/thexx.jpg',
+    cover: '/img/albums/thexx.jpg',
     color: '#FFFFFF'
   }];
 
