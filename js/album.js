@@ -8,6 +8,10 @@ angular.module('materialApp.directives')
     '$timeout',
   function ($scope, $element, $attrs, $sniffer, $document, $timeout) {
 
+    $scope.blockColor = $scope.$eval($attrs.color);
+    $scope.end = $scope.$eval($attrs.end);
+    $scope.cover = $scope.$eval($attrs.cover);
+
     $scope.state = 'collapsed';
     $scope.sticky = false;
     var doRipple = true;
@@ -25,10 +29,10 @@ angular.module('materialApp.directives')
         ripple.setAttribute('r', 0);
 
     // SVG Animations
-    var rippleOpen = document.getElementById('ripple-open');
-    var rippleClose = document.getElementById('ripple-close');
-    var rippleBg = document.getElementById('ripple-bg');
-    var rippleBgUndo = document.getElementById('ripple-bg-undo');
+    var rippleOpen = $element.find('animate')[2];
+    var rippleClose = $element.find('animate')[3];
+    var rippleBg = $element.find('animate')[0];
+    var rippleBgUndo = $element.find('animate')[1];
 
     var h = document.body.clientHeight;
     var w = document.body.clientWidth;
@@ -41,11 +45,11 @@ angular.module('materialApp.directives')
       coverClone.onclick = collapse;
 
       coverClone.setAttribute('style',
-        'position: fixed; top:' + cover.offsetTop + 'px; ' +
+        'position: fixed; top:' + (cover.offsetTop - document.body.scrollTop) + 'px; ' +
         'left:' + cover.offsetLeft + 'px; ' +
         'transform: translate3d(' +
           (-cover.offsetLeft - 0.0025*w + 0.125*w) + 'px,' +
-          (h - cover.offsetTop - offsets.height + 0.0025*w - 64) + 'px,0); ' +
+          (h - cover.offsetTop - offsets.height - 64 + document.body.scrollTop) + 'px,0); ' +
         'z-index: 1000; '
       );
       cover.style.visibility = 'hidden';
@@ -113,6 +117,7 @@ angular.module('materialApp.directives')
       restrict: 'E',
       templateUrl: 'partials/album.html',
       controller: 'AlbumCtrl',
+      scope: true,
       link: function (scope, iElement, iAttrs) {
       }
     };

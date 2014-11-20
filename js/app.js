@@ -12,29 +12,41 @@ function($scope, $sniffer, $document, $window) {
   };
 
   vm.albums = [{
-    cover: '/img/caribou.jpg'
+    cover: '/img/caribou.jpg',
+    color: '#8DC384'
   }, {
-    cover: '/img/dive.jpg'
+    cover: '/img/dive.jpg',
+    color: '#758978'
   }, {
-    cover: '/img/fmbelfast.jpg'
+    cover: '/img/fmbelfast.jpg',
+    color: '#DD5C56'
   }, {
-    cover: '/img/jamiexx.jpg'
+    cover: '/img/jamiexx.jpg',
+    color: '#FE8F00'
   }, {
-    cover: '/img/goldpanda.jpg'
+    cover: '/img/goldpanda.jpg',
+    color: '#009AC6'
   }, {
-    cover: '/img/wildbeasts.jpg'
+    cover: '/img/wildbeasts.jpg',
+    color: '#F7201D'
   }, {
-    cover: '/img/laroux.jpg'
-  }];
-
-  vm.moreAlbums = [{
-    cover: '/img/fourtet.jpg'
+    cover: '/img/laroux.jpg',
+    color: '#CBA135'
   }, {
-    cover: '/img/tycho1.jpg'
+    cover: '/img/girl.jpg',
+    color: '#F0B80F'
   }, {
-    cover: '/img/holyfuck.jpg'
+    cover: 'img/fourtet.jpg',
+    color: '#991D4F'
+  }, {
+    cover: '/img/tycho1.jpg',
+    color: '#303C52'
+  }, {
+    cover: '/img/holyfuck.jpg',
+    color: '#323945'
   },{
-    cover: '/img/xx.jpg'
+    cover: '/img/xx.jpg',
+    color: '#FFFFFF'
   }];
 
 }]);

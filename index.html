@@ -19,23 +19,22 @@
     </header>
 
     <!-- All Albums -->
-    <div class="album" ng-repeat="album in anim.albums">
-      <!-- Album Cover -->
+    <!-- <div class="album" ng-repeat="album in anim.albums">
       <div class="cover" ng-class="{ end: vm.isEnd($index) }">
         <img ng-src="{{ album.cover }}"/>  <p>{{$index % 3}}</p>
       </div>
-    </div>
-
-    <!-- Main Album -->
-    <album></album>
+    </div> -->
+    <album ng-repeat="album in anim.albums"
+      color="album.color"
+      end="vm.isEnd($index)"
+      cover="album.cover"></album>
 
     <!-- More Albums -->
-    <div class="album" ng-repeat="album in anim.moreAlbums">
-      <!-- Album Cover -->
+    <!-- <div class="album" ng-repeat="album in anim.moreAlbums">
       <div class="cover" ng-class="{ true: end }[$index % 3 == 0]">
         <img ng-src="{{ album.cover }}"/>
       </div>
-    </div>
+    </div> -->
 
     <!-- Player -->
     <div class="player">
