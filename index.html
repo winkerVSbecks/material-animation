@@ -4,21 +4,26 @@
     <!-- meta -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <!-- title -->
     <title>Material Animation</title>
     <!-- styles -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
   </head>
-  <body ng-controller="AnimationController">
+  <body ng-controller="AnimationController as anim">
 
     <!-- Hero -->
     <header>
-      <h1>Material Animation</h1>
+      <h1>Material Animation Experiment</h1>
     </header>
 
-    <!-- Album -->
-    <album></album>
+    <!-- All Albums -->
+    <album ng-repeat="album in anim.albums"
+      color="album.color"
+      end="vm.isEnd($index)"
+      artist="album.artist"
+      cover="album.cover"></album>
 
     <!-- Player -->
     <div class="player">
