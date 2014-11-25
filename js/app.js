@@ -1,6 +1,8 @@
 angular.module('materialApp.directives', ['ngAnimate']);
 
 angular.module('materialApp', [
+  'ngAnimate',
+  'ngRoute',
   'materialApp.directives'
 ])
 .controller('AnimationController', [
