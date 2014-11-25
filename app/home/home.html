@@ -1,0 +1,22 @@
+<!-- Hero -->
+<header>
+  <h1>Material Animation Experiment</h1>
+</header>
+
+<!-- All Albums -->
+<animated-page ng-repeat="album in home.albums"
+  color="album.color"
+  end="home.isEnd($index)"
+  artist="album.artist"
+  cover="album.cover"></animated-page>
+
+<!-- Player -->
+<div class="player">
+  <a class="album-art" href="">
+    <img src="/img/tycho.jpg" />
+  </a>
+  <div class="body">
+    <h4>Awake</h4>
+    <p>Tycho</p>
+  </div>
+</div>
