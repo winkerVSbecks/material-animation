@@ -1,10 +1,13 @@
+angular.module('materialApp.services', []);
 angular.module('materialApp.directives', ['ngAnimate']);
-angular.module('materialApp.controllers', []);
+angular.module('materialApp.data', []);
+angular.module('materialApp.controllers', ['materialApp.data']);
 
 angular.module('materialApp', [
   'ngRoute',
+  'materialApp.services',
   'materialApp.directives',
-  'materialApp.controllers'
+  'materialApp.controllers',
 ])
 .config([
     '$routeProvider',
@@ -15,11 +18,9 @@ angular.module('materialApp', [
         controller: 'HomeCtrl',
         controllerAs: 'home'
       })
-      // .when('/albums/:name', {
-      //   templateUrl: 'app/album/album.html',
-      //   controller: 'HomeCtrl',
-      //   controllerAs: ''
-      // })
+      .when('/albums/:name', {
+        templateUrl: 'app/album/album.html',
+      })
       .otherwise({
         redirectTo: '/'
       });

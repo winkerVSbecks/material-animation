@@ -1,0 +1,41 @@
+// ----------------------
+// Player
+// ----------------------
+.player {
+  position: fixed;
+  left: 12.5%;
+  bottom: 0px;
+  width: 75%;
+  height: $player-height;
+  background-color: $white;
+  border-top: 4px solid $pink;
+  @extend %optimize;
+  z-index: $z-index-player;
+
+  .album-art {
+    width: $player-height - 4px;
+    height: $player-height - 4px;
+    float: left;
+    margin-right: 15px;
+    overflow: hidden;
+
+    img {
+      width: $player-height - 4px;
+      height: $player-height - 4px;
+    }
+  }
+
+  .body {
+    float: left;
+    height: 40px;
+    margin-top: 12px;
+
+    h4 {
+      margin-bottom: 5px;
+    }
+    p {
+      color: #aaa;
+      font-size: 0.75em;
+    }
+  }
+}

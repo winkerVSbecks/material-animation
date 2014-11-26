@@ -1,0 +1,67 @@
+// ----------------------
+// Global
+// ----------------------
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: #444;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+// ----------------------
+// Header
+// ----------------------
+header {
+  padding-left: 6.5%;
+  padding-right: 6.5%;
+  background-color: $black;
+  overflow: hidden;
+}
+
+header h1 {
+  height: 80px;
+  line-height: 80px;
+  color: #FFF;
+  font-size: 1.25em;
+  font-weight: 300;
+  text-align: left;
+  display: block;
+}
+
+
+
+// ----------------------
+// Ripple
+// ----------------------
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @extend %optimize;
+  display: none;
+
+  &.full {
+    display: inherit;
+  }
+}
+
+circle {
+  @extend %optimize;
+  @include transition(all cubic-bezier(0.455, 0.03, 0.515, 0.955) 600ms);
+}

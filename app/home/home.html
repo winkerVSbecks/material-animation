@@ -4,19 +4,19 @@
 </header>
 
 <!-- All Albums -->
-<animated-page ng-repeat="album in home.albums"
+<!-- <animated-page ng-repeat="album in home.albums"
   color="album.color"
   end="home.isEnd($index)"
   artist="album.artist"
-  cover="album.cover"></animated-page>
+  cover="album.cover"></animated-page> -->
 
-<!-- Player -->
-<div class="player">
-  <a class="album-art" href="">
-    <img src="/img/tycho.jpg" />
-  </a>
-  <div class="body">
-    <h4>Awake</h4>
-    <p>Tycho</p>
-  </div>
-</div>
+<!-- Album Cover List -->
+<a persist
+   ng-href="{{home.getDestination(album.id)}}"
+   class="album-cover"
+   ng-repeat="album in home.albums"
+   ng-class="{ end: home.isEnd($index) }">
+
+        <img ng-src="{{album.coverImg}}"/>
+
+</a>

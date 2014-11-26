@@ -6,7 +6,7 @@ angular.module('materialApp.directives')
     '$sniffer',
     '$document',
     '$timeout',
-  function ($scope, $element, $attrs, $sniffer, $document, $timeout) {
+  function($scope, $element, $attrs, $sniffer, $document, $timeout) {
 
     var vm = this;
 
@@ -117,4 +117,4 @@ angular.module('materialApp.directives')
         }, true);
       }
     };
-  }])
+  }]);
