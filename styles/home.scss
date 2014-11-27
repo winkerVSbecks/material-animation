@@ -10,8 +10,8 @@
 
   width: 25vw;
   height: 25vw;
-  padding-top: 0.25vw;
-  padding-left: 0.25vw;
+  padding-top: 4px;
+  padding-left: 4px;
 
   cursor: pointer;
   transform-origin: left top;
@@ -23,7 +23,7 @@
       -webkit-transform-style: preserve-3d;
 
   &.end {
-    padding-right: 0.25vw;
+    padding-right: 4px;
   }
 
   img {

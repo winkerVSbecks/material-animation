@@ -21,7 +21,7 @@ angular.module('materialApp.data')
       coverImg: '/img/albums/fmbelfast.jpg',
       color: '#DD5C56'
     }, {
-      id: ' farnearer',
+      id: 'farnearer',
       name: ' Far Nearer',
       artist: 'Jamie xx',
       artistImg: '/img/artists/jamiexx.jpg',
@@ -63,12 +63,12 @@ angular.module('materialApp.data')
       coverImg: 'img/albums/fourtet.jpg',
       color: '#DFE4E2'
     }, {
-      id: 'awake',
-      name: 'Awake',
-      artist: 'Tycho',
-      artistImg: '/img/artists/tycho.jpg',
-      coverImg: '/img/albums/tycho.jpg',
-      color: '#D47765'
+      id: 'gunsdontkillpeople',
+      name: 'Guns Don\'t Kill People',
+      artist: 'Major Lazer',
+      artistImg: '/img/artists/majorlazer.jpg',
+      coverImg: '/img/albums/gunsdontkillpeople.jpg',
+      color: '#FDE65A'
     }, {
       id: 'latin',
       name: 'Latin',

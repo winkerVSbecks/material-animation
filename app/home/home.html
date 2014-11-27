@@ -1,17 +1,5 @@
-<!-- Hero -->
-<header>
-  <h1>Material Animation Experiment</h1>
-</header>
-
-<!-- All Albums -->
-<!-- <animated-page ng-repeat="album in home.albums"
-  color="album.color"
-  end="home.isEnd($index)"
-  artist="album.artist"
-  cover="album.cover"></animated-page> -->
-
 <!-- Album Cover List -->
-<a persist
+<a persist="album.id"
    ng-href="{{home.getDestination(album.id)}}"
    class="album-cover"
    ng-repeat="album in home.albums"

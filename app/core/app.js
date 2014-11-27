@@ -11,17 +11,19 @@ angular.module('materialApp', [
 ])
 .config([
     '$routeProvider',
-  function ($routeProvider) {
+  function($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/albums', {
         templateUrl: 'app/home/home.html',
         controller: 'HomeCtrl',
         controllerAs: 'home'
       })
       .when('/albums/:name', {
         templateUrl: 'app/album/album.html',
+        controller: 'AlbumCtrl',
+        controllerAs: 'player'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/albums'
       });
-}])
+}]);
