@@ -10,7 +10,6 @@ angular.module('materialApp.services')
 
     var elsInTransition = [];
     var ctrls = {};
-    var doneTransition;
 
     service.registerAsMovable = function(id, ctrl) {
 
@@ -37,7 +36,6 @@ angular.module('materialApp.services')
     service.unRegister = function(id, ctrl) {
       elsInTransition = [];
       ctrls = {};
-      service.registerAsMovable(id, ctrl);
       $rootScope.$broadcast('PersistElementsRegister');
     };
 

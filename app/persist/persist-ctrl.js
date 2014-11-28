@@ -19,18 +19,22 @@ angular.module('materialApp.directives')
     var elementClone = null;
     var transform = {};
 
+    // Register with the animation service as an movable element
+    var registerAsMovable = function() {
+      animationDelegate.registerAsMovable(id, vm);
+      vm.state = 'movable';
+    };
+
     // If there is a clone in transition register as a destination
     var doRegisterAsMovable = animationDelegate.registerAsDestination(id, element);
 
     if (doRegisterAsMovable) {
-      // Register with the animation service as an movable element
-      animationDelegate.registerAsMovable(id, vm);
-      vm.state = 'movable';
-
+      registerAsMovable();
     } else {
       vm.state = 'destination';
     }
 
+    // Clone the element
     var buildClone = function() {
       // elementClone = $element.clone(false)[0];
       elementClone = element.cloneNode(true);
@@ -78,9 +82,9 @@ angular.module('materialApp.directives')
       }, false);
     };
 
-    // Add event listeners
+
     // Transiton End Event
-    var transitionEnd = $rootScope.$on(id + 'transitionend', function() {
+    var transitionEndListener = $rootScope.$on(id + 'transitionend', function() {
       // The destination state will now become movable,
       // to handle the back button
       if (vm.state === 'destination') {
@@ -92,14 +96,13 @@ angular.module('materialApp.directives')
         vm.state = 'movable';
       }
     });
+
     // Register after a transition is complete
-    var registerNow = $rootScope.$on('PersistElementsRegister', function() {
-      animationDelegate.registerAsMovable(id, vm);
-    });
+    var registerAsMovableListener = $rootScope.$on('PersistElementsRegister', registerAsMovable);
 
     // Cleanup on destroy
     $scope.$on('$destroy', function () {
-      transitionEnd();
-      registerNow();
+      transitionEndListener();
+      registerAsMovableListener();
     });
   }]);
