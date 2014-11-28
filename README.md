@@ -1,1 +1,1 @@
-- When I remove a directive from scope `element.remove()` does it also destroy the controller for that directive?
+Google Material style animations with AngularJS
