@@ -10,8 +10,9 @@ angular.module('materialApp.directives')
 
     var vm = this;
 
-    // Get the events which trigger animations
+    // Get the id and destination style
     var id = $scope.$eval($attrs.persist);
+    var destStyle = $scope.$eval($attrs.destStyle) || {};
 
     // The elements involved
     var element = $element[0];
@@ -19,13 +20,12 @@ angular.module('materialApp.directives')
     var transform = {};
 
     // If there is a clone in transition register as a destination
-    var doRegisterAsActive = animationDelegate.registerAsDestination(id, element);
+    var doRegisterAsMovable = animationDelegate.registerAsDestination(id, element);
 
-    if (doRegisterAsActive) {
-
-      // Register with the animation service as an active element
-      animationDelegate.registerAsActive(id, vm);
-      vm.state = 'active';
+    if (doRegisterAsMovable) {
+      // Register with the animation service as an movable element
+      animationDelegate.registerAsMovable(id, vm);
+      vm.state = 'movable';
 
     } else {
       vm.state = 'destination';
@@ -45,7 +45,7 @@ angular.module('materialApp.directives')
 
       var start = domUtil.getAbsPosInPx(element);
 
-      domUtil.style(elementClone, {
+      angular.extend(destStyle, {
         position: 'fixed',
         top: start.top,
         left: start.left,
@@ -53,11 +53,13 @@ angular.module('materialApp.directives')
         zIndex: 1000
       });
 
-      onEnd();
+      domUtil.style(elementClone, destStyle);
+
+      onTransitionStart();
     };
 
     // Toggle visibility of the equivalent in the new view
-    var onEnd = function() {
+    var onTransitionStart = function() {
       elementClone.addEventListener('transitionend', function() {
         // Tell the equivalent in the
         // new view to become visible
@@ -77,19 +79,27 @@ angular.module('materialApp.directives')
     };
 
     // Add event listeners
-    var transitionend = $rootScope.$on(id + 'transitionend', function() {
-      // The destination state will now become active,
+    // Transiton End Event
+    var transitionEnd = $rootScope.$on(id + 'transitionend', function() {
+      // The destination state will now become movable,
       // to handle the back button
       if (vm.state === 'destination') {
-
+        // Make the destination element visible
         element.style.visibility = 'visible';
+        // Unregister this clone
         animationDelegate.unRegister(id, vm);
-        vm.state = 'active';
+        // Set state to movable
+        vm.state = 'movable';
       }
+    });
+    // Register after a transition is complete
+    var registerNow = $rootScope.$on('PersistElementsRegister', function() {
+      animationDelegate.registerAsMovable(id, vm);
     });
 
     // Cleanup on destroy
     $scope.$on('$destroy', function () {
-      transitionend();
+      transitionEnd();
+      registerNow();
     });
   }]);
