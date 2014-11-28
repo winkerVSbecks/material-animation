@@ -1,0 +1,26 @@
+// ----------------------
+// Variables
+// ----------------------
+$black: #222;
+$yellow: #F5BC0B;
+$white: #FBFCFA;
+$pink: #F31F69;
+$grey: #808280;
+
+$album-width: 80%;
+$player-height: 64px;
+
+$z-index-album: 998;
+$z-index-svg: 999;
+$z-index-album-clone: 1000;
+$z-index-player: 1001;
+
+
+// ----------------------
+// Imports
+// ----------------------
+@import "mixins";
+@import "global";
+@import "player";
+@import "home";
+@import "album";

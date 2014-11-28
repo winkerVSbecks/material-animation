@@ -1,0 +1,15 @@
+<header>
+  <h1>Material Animation Experiment</h1>
+</header>
+
+<!-- Album Cover List -->
+<a persist="album.id"
+   dest-style="{ padding: 0 }"
+   ng-href="{{home.getDestination(album.id)}}"
+   class="album-cover"
+   ng-repeat="album in home.albums"
+   ng-class="{ end: home.isEnd($index) }">
+
+        <img ng-src="{{album.coverImg}}"/>
+
+</a>

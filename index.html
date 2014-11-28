@@ -9,21 +9,11 @@
     <title>Material Animation</title>
     <!-- styles -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/app.css">
   </head>
-  <body ng-controller="AnimationController as anim">
+  <body>
 
-    <!-- Hero -->
-    <header>
-      <h1>Material Animation Experiment</h1>
-    </header>
-
-    <!-- All Albums -->
-    <album ng-repeat="album in anim.albums"
-      color="album.color"
-      end="vm.isEnd($index)"
-      artist="album.artist"
-      cover="album.cover"></album>
+    <ng-view></ng-view>
 
     <!-- Player -->
     <div class="player">
@@ -37,11 +27,20 @@
     </div>
 
     <!-- scripts -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script src="bower_components/ramda/ramda.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/album.js"></script>
+    <!-- app scripts -->
+    <script src="app/core/app.js"></script>
+    <script src="app/core/dom-util.js"></script>
+    <script src="app/core/albums.js"></script>
+    <script src="app/core/animationDelegate.js"></script>
+    <script src="app/home/home-ctrl.js"></script>
+    <script src="app/album/album-ctrl.js"></script>
+    <script src="app/persist/persist-ctrl.js"></script>
+    <script src="app/persist/persist.js"></script>
+    <script src="app/animated-page/animated-page-ctrl.js"></script>
+    <script src="app/animated-page/animated-page.js"></script>
   </body>
 </html>

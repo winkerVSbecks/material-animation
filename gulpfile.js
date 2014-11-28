@@ -8,7 +8,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 
 gulp.task('sass', function(done) {
-  gulp.src('./styles/styles.scss')
+  gulp.src('./styles/app.scss')
     .pipe(sass())
     .pipe(gulp.dest('./styles/'))
     .pipe(minifyCss({
@@ -31,7 +31,7 @@ gulp.task('dev', function() {
 
   // Watch HTML files for changes
   console.log('[CONNECT] Watching files for live-reload'.blue);
-  watch({ glob: ['./index.html', './js/*.js', './partials/*.html']})
+  watch({ glob: ['./index.html', './app/**/*.*']})
     .pipe(connect.reload());
 
   // Watch HTML files for changes

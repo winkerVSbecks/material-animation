@@ -1,20 +1,25 @@
 angular.module('materialApp.directives')
-  .controller('AlbumCtrl', [
+  .controller('AnimatedPageCtrl', [
     '$scope',
     '$element',
     '$attrs',
     '$sniffer',
     '$document',
     '$timeout',
-  function ($scope, $element, $attrs, $sniffer, $document, $timeout) {
+  function($scope, $element, $attrs, $sniffer, $document, $timeout) {
 
-    $scope.blockColor = $scope.$eval($attrs.color);
-    $scope.end = $scope.$eval($attrs.end);
-    $scope.cover = $scope.$eval($attrs.cover);
-    $scope.artist = $scope.$eval($attrs.artist);
+    var vm = this;
 
-    $scope.state = 'collapsed';
-    $scope.sticky = false;
+    // data passed in
+    vm.blockColor = $scope.$eval($attrs.color);
+    vm.end = $scope.$eval($attrs.end);
+    vm.cover = $scope.$eval($attrs.cover);
+    vm.artist = $scope.$eval($attrs.artist);
+
+    // Start state
+    vm.state = 'collapsed';
+    vm.sticky = false;
+    vm.animating = false;
     var doRipple = true;
 
     var cover = $element.find('div')[0];
@@ -56,9 +61,9 @@ angular.module('materialApp.directives')
       cover.style.visibility = 'hidden';
       svg.setAttribute('style', 'z-index: 999;');
 
-      $scope.state = 'full';
-      $scope.sticky = true;
-      $scope.animating = true;
+      vm.state = 'full';
+      vm.sticky = true;
+      vm.animating = true;
 
       if (doRipple) {
         rippleOpen.beginElement();
@@ -74,8 +79,8 @@ angular.module('materialApp.directives')
 
     var collapse = function() {
       // Collapse
-      $scope.state = 'collapsed';
-      $scope.animating = true;
+      vm.state = 'collapsed';
+      vm.animating = true;
       if (doRipple) {
         rippleClose.beginElement();
       }
@@ -97,29 +102,19 @@ angular.module('materialApp.directives')
       }, 1200);
     };
 
-    $scope.toggleCover = function(e) {
+    vm.toggleCover = function(e) {
       // Expand
-      if ($scope.state === 'collapsed') {
+      if (vm.state === 'collapsed') {
         expand();
       } else {
         collapse();
       }
 
-      if (!$scope.didAttachListener) {
+      if (!vm.didAttachListener) {
         e.currentTarget.addEventListener('transitionend', function() {
-          $scope.animating = false;
-          $scope.didAttachListener = true;
+          vm.animating = false;
+          vm.didAttachListener = true;
         }, true);
-      }
-    };
-  }])
-  .directive('album', [function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'partials/album.html',
-      controller: 'AlbumCtrl',
-      scope: true,
-      link: function (scope, iElement, iAttrs) {
       }
     };
   }]);
