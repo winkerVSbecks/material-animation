@@ -4,9 +4,12 @@ angular.module('materialApp.services')
     '$rootScope',
     'domUtil',
     '$q',
-  function($location, $rootScope, domUtil, $q) {
+    '$timeout',
+  function($location, $rootScope, domUtil, $q, $timeout) {
 
-    var service = {};
+    var service = {
+      transition: ''
+    };
 
     var elsInTransition = [];
     var ctrls = {};
@@ -38,6 +41,14 @@ angular.module('materialApp.services')
       ctrls = {};
       $rootScope.$broadcast('PersistElementsRegister');
     };
+
+    // $rootScope.$on('$routeChangeStart', function(angularEvent, next) {
+    //   if (next && next.$$route && next.$$route.originalPath === '/albums/:name') {
+    //     $rootScope.transition = 'expand-view';
+    //   } else {
+    //     $rootScope.transition = 'contract-view';
+    //   }
+    // });
 
     return service;
   }]);

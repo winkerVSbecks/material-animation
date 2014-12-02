@@ -1,10 +1,11 @@
 angular.module('materialApp.services', []);
-angular.module('materialApp.directives', ['ngAnimate']);
+angular.module('materialApp.directives', []);
 angular.module('materialApp.data', []);
 angular.module('materialApp.controllers', ['materialApp.data']);
 
 angular.module('materialApp', [
   'ngRoute',
+  'ngAnimate',
   'materialApp.services',
   'materialApp.directives',
   'materialApp.controllers',
@@ -26,4 +27,4 @@ angular.module('materialApp', [
       .otherwise({
         redirectTo: '/albums'
       });
-}]);
+}])

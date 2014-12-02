@@ -2,7 +2,7 @@ angular.module('materialApp.controllers')
   .controller('HomeCtrl', [
     'albums',
     'animationDelegate',
-  function(albums) {
+  function(albums, animationDelegate) {
 
     var vm = this;
 
