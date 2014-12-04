@@ -3,10 +3,9 @@ angular.module('materialApp.directives')
     '$scope',
     '$element',
     '$attrs',
-    '$sniffer',
-    '$document',
     '$timeout',
-  function($scope, $element, $attrs, $sniffer, $document, $timeout) {
+    'animationDelegate',
+  function($scope, $element, $attrs, $timeout, animationDelegate) {
 
     var vm = this;
 
@@ -21,16 +20,10 @@ angular.module('materialApp.directives')
     var cover = $element.find('div')[0];
     var svg = $element.find('svg')[0];
 
-    // var offsets = cover.getBoundingClientRect();
-    // var x = offsets.left + offsets.width/2;
-    // var y = offsets.top + offsets.height/2;
-
-    var x = 0;
-    var y = 0;
-
+    // Position the ripple
     var ripple = $element.find('circle')[0];
-        ripple.setAttribute('cx', x);
-        ripple.setAttribute('cy', y);
+        ripple.setAttribute('cx', animationDelegate.elPos.left);
+        ripple.setAttribute('cy', animationDelegate.elPos.top);
         ripple.setAttribute('r', 0);
 
     // SVG Animations
@@ -39,12 +32,8 @@ angular.module('materialApp.directives')
     var rippleBg = $element.find('animate')[0];
     var rippleBgUndo = $element.find('animate')[1];
 
-    var h = document.body.clientHeight;
-    var w = document.body.clientWidth;
-
+    // Expand out and colour fades to image
     var expand = function() {
-      // svg.setAttribute('style', 'z-index: 999;');
-
       vm.state = 'full';
 
       rippleOpen.beginElement();
@@ -55,6 +44,7 @@ angular.module('materialApp.directives')
       }, 500);
     };
 
+    // Collapse back into a ball, only the image
     var collapse = function() {
       // Collapse
       vm.state = 'collapsed';
@@ -67,5 +57,6 @@ angular.module('materialApp.directives')
       }, 1200);
     };
 
+    // Start expand on load
     expand();
   }]);

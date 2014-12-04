@@ -34,12 +34,25 @@ angular.module('materialApp.services')
 
     // Get the position of an
     // element within it's parent
+    // from the top left corner of the el
     service.getPos = function(el) {
       var off = el.getBoundingClientRect();
 
       return {
         left: off.left,
         top: off.top
+      };
+    };
+
+    // Get the position of an
+    // element within it's parent
+    // from the el's center
+    service.getPosCenter = function(el) {
+      var off = el.getBoundingClientRect();
+
+      return {
+        left: off.left + off.width/2,
+        top: off.top + off.height/2
       };
     };
 

@@ -8,14 +8,17 @@ angular.module('materialApp.services')
   function($location, $rootScope, domUtil, $q, $timeout) {
 
     var service = {
-      transition: ''
+      transition: '',
+      elPos: {
+        left: '100%',
+        top: '100%'
+      }
     };
 
     var elsInTransition = [];
     var ctrls = {};
 
     service.registerAsMovable = function(id, ctrl) {
-
       if (!R.contains(id)(elsInTransition)) {
         elsInTransition.push(id);
       }
@@ -26,7 +29,11 @@ angular.module('materialApp.services')
     service.registerAsDestination = function(id, el) {
       if (R.contains(id)(elsInTransition)) {
         el.style.visibility = 'hidden';
-        ctrls[id].transition( domUtil.getAbsPos(el) );
+
+        // Track the elements position to allow
+        // the animated page to start from that location
+        service.elPos = domUtil.getPosCenter(ctrls[id].element);
+        ctrls[id].transition(domUtil.getAbsPos(el));
 
         return false;
 
@@ -39,16 +46,9 @@ angular.module('materialApp.services')
     service.unRegister = function(id, ctrl) {
       elsInTransition = [];
       ctrls = {};
+      service.elPos = null;
       $rootScope.$broadcast('PersistElementsRegister');
     };
-
-    // $rootScope.$on('$routeChangeStart', function(angularEvent, next) {
-    //   if (next && next.$$route && next.$$route.originalPath === '/albums/:name') {
-    //     $rootScope.transition = 'expand-view';
-    //   } else {
-    //     $rootScope.transition = 'contract-view';
-    //   }
-    // });
 
     return service;
   }]);

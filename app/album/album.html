@@ -1,16 +1,11 @@
-<!-- artist image -->
-<!-- <div ng-style="player.artist"></div> -->
-<!-- colour block -->
-<!-- <div ng-style="player.colorBlock"></div> -->
-
 <animated-page color="player.album.color"
                artist="player.album.artistImg"></animated-page>
 
 
-<div style="position: fixed; bottom: 64px; left: 12.5%; background-color: rgba(255, 255, 255 ,0.5); width: 75%;">
+<div class="ui" ng-style="player.uiStyle">
 
   <a persist="player.album.id"
-     href="#/"
+     href="#/albums"
      style="padding: 0;"
      class="album-cover">
 

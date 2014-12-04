@@ -3,7 +3,8 @@ angular.module('materialApp.controllers')
     'albums',
     'animationDelegate',
     '$routeParams',
-  function(albums, animationDelegate, $routeParams) {
+    '$timeout',
+  function(albums, animationDelegate, $routeParams, $timeout) {
 
     var vm = this;
 
@@ -16,6 +17,14 @@ angular.module('materialApp.controllers')
       backgroundImage: 'url(' + vm.album.artistImg + ')',
       backgroundSize: 'cover'
     };
+
+    $timeout(function() {
+      vm.uiStyle = {
+        transform: 'scale3d(1, 1, 1)',
+        backgroundColor: vm.album.color,
+        opacity: 1
+      };
+    }, 300)
 
     // vm.artist = {
     //   position: 'relative',

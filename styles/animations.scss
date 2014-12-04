@@ -1,6 +1,6 @@
 .animate-view {
   position: relative;
-  transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 800ms;
+  transition: all $cubic 800ms;
 }
 
 
@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 .animate-view.ng-enter.ng-enter-active {
-  // position: relative;
+
 }
 
 .animate-view.ng-leave {
@@ -27,7 +27,7 @@
   overflow: hidden;
 }
 .animate-view.ng-leave.ng-leave-active {
-  // position: relative;
+
 }
 
 
@@ -42,7 +42,7 @@
   height: 100%;
   display: block;
   overflow: hidden;
-  transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 800ms;
+  transition: all $cubic 800ms;
 }
 
 
@@ -71,7 +71,7 @@
   height: 100%;
   display: block;
   overflow: hidden;
-  transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 800ms;
+  transition: all $cubic 800ms;
 }
 
 .contract-view.ng-enter {
