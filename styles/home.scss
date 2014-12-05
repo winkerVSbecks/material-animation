@@ -3,7 +3,7 @@
 // used in the home view
 // ----------------------
 .album-cover {
-  transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 900ms;
+  transition: all $cubic 900ms;
   position: relative;
   overflow: hidden;
   float: left;

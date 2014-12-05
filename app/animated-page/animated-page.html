@@ -50,17 +50,3 @@
              fill="freeze" />
   </circle>
 </svg>
-
-<div class="album"
-  ng-click="animatedPage.animating || animatedPage.toggleCover($event)"
-  ng-class="animatedPage.state">
-    <!-- Album Cover -->
-    <div class="cover" ng-class="{ end: animatedPage.end }">
-      <img ng-src="{{animatedPage.cover}}"/>
-    </div>
-    <!-- UI Card -->
-    <div class="ui" ng-class="animatedPage.state">
-      <h1>G I R L</h1>
-      <p>Pharell Williams</p>
-    </div>
-</div>

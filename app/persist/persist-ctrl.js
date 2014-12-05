@@ -15,7 +15,7 @@ angular.module('materialApp.directives')
     var destStyle = $scope.$eval($attrs.destStyle) || {};
 
     // The elements involved
-    var element = $element[0];
+    vm.element = $element[0];
     var elementClone = null;
     var transform = {};
 
@@ -26,7 +26,7 @@ angular.module('materialApp.directives')
     };
 
     // If there is a clone in transition register as a destination
-    var doRegisterAsMovable = animationDelegate.registerAsDestination(id, element);
+    var doRegisterAsMovable = animationDelegate.registerAsDestination(id, vm.element);
 
     if (doRegisterAsMovable) {
       registerAsMovable();
@@ -37,9 +37,11 @@ angular.module('materialApp.directives')
     // Clone the element
     var buildClone = function() {
       // elementClone = $element.clone(false)[0];
-      elementClone = element.cloneNode(true);
+      elementClone = vm.element.cloneNode(true);
       elementClone.className += ' ' + id;
       domUtil.appendToBody(elementClone);
+
+      vm.element.style.visibility = 'hidden';
     };
 
     // Move the album cover from the grid to the player
@@ -47,13 +49,13 @@ angular.module('materialApp.directives')
 
       buildClone();
 
-      var start = domUtil.getAbsPosInPx(element);
+      var start = domUtil.getAbsPosInPx(vm.element);
 
       angular.extend(destStyle, {
         position: 'fixed',
         top: start.top,
         left: start.left,
-        transform: domUtil.transform(element, dest),
+        transform: domUtil.transform(vm.element, dest),
         zIndex: 1000
       });
 
@@ -89,7 +91,7 @@ angular.module('materialApp.directives')
       // to handle the back button
       if (vm.state === 'destination') {
         // Make the destination element visible
-        element.style.visibility = 'visible';
+        vm.element.style.visibility = 'visible';
         // Unregister this clone
         animationDelegate.unRegister(id, vm);
         // Set state to movable

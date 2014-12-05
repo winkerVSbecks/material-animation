@@ -9,7 +9,9 @@ var rename = require('gulp-rename');
 
 gulp.task('sass', function(done) {
   gulp.src('./styles/app.scss')
-    .pipe(sass())
+    .pipe(sass({
+      errLogToConsole:true
+    }))
     .pipe(gulp.dest('./styles/'))
     .pipe(minifyCss({
       keepSpecialComments: 0

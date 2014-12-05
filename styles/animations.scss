@@ -1,0 +1,34 @@
+.animate-view {
+  position: relative;
+  transition: all $cubic 800ms;
+}
+
+
+.animate-view.ng-enter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.animate-view.ng-leave {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+
+  .ui { visibility: hidden; }
+}
+
+.animate-view.reverse.ng-enter {
+  z-index: 996;
+}
+.animate-view.reverse {
+  z-index: 997;
+}
