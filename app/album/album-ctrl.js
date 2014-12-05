@@ -4,7 +4,8 @@ angular.module('materialApp.controllers')
     'animationDelegate',
     '$routeParams',
     '$timeout',
-  function(albums, animationDelegate, $routeParams, $timeout) {
+    '$rootScope',
+  function(albums, animationDelegate, $routeParams, $timeout, $rootScope) {
 
     var vm = this;
 
@@ -19,32 +20,16 @@ angular.module('materialApp.controllers')
     };
 
     $timeout(function() {
+      vm.uiState = 'expand';
       vm.uiStyle = {
-        transform: 'scale3d(1, 1, 1)',
         backgroundColor: vm.album.color,
-        opacity: 1
+        color: vm.album.textColor
       };
-    }, 300)
+    }, 300);
 
-    // vm.artist = {
-    //   position: 'relative',
-    //   width: '100%',
-    //   height: '100%',
-    //   top: 0,
-    //   left: 0,
-    //   backgroundImage: 'url(' + vm.album.artistImg + ')',
-    //   backgroundSize: 'cover',
-    //   backgroundPosition: 'center center'
-    // };
 
-    // vm.colorBlock = {
-    //   position: 'relative',
-    //   width: '100%',
-    //   height: '100%',
-    //   top: '-100%',
-    //   left: 0,
-    //   backgroundColor: vm.album.color,
-    //   opacity: 0.5
-    // };
+    $timeout(function() {
+      $rootScope.transition = 'reverse';
+    }, 300);
 
   }]);

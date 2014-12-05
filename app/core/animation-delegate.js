@@ -9,7 +9,7 @@ angular.module('materialApp.services')
 
     var service = {
       transition: '',
-      elPos: {
+      ripplePos: {
         left: '100%',
         top: '100%'
       }
@@ -32,7 +32,7 @@ angular.module('materialApp.services')
 
         // Track the elements position to allow
         // the animated page to start from that location
-        service.elPos = domUtil.getPosCenter(ctrls[id].element);
+        service.ripplePos = domUtil.getPosCenter(ctrls[id].element);
         ctrls[id].transition(domUtil.getAbsPos(el));
 
         return false;
@@ -49,6 +49,18 @@ angular.module('materialApp.services')
       service.elPos = null;
       $rootScope.$broadcast('PersistElementsRegister');
     };
+
+    $rootScope.$on('$routeChangeStart', function(angularEvent, next, prev) {
+      if (next && next.$$route && next.$$route.originalPath === '/albums/:name') {
+        // $timeout(function() {
+        //   $rootScope.transition = 'reverse';
+        // }, 300);
+      } else {
+        $timeout(function() {
+          $rootScope.transition = '';
+        }, 300);
+      }
+    });
 
     return service;
   }]);

@@ -1,8 +1,7 @@
 <animated-page color="player.album.color"
                artist="player.album.artistImg"></animated-page>
 
-
-<div class="ui" ng-style="player.uiStyle">
+<div class="ui" ng-class="player.uiState" ng-style="player.uiStyle">
 
   <a persist="player.album.id"
      href="#/albums"
@@ -12,4 +11,7 @@
         <img ng-src="{{player.album.coverImg}}"/>
 
   </a>
+
+  <h1>{{player.album.name}}</h1>
+  <p>{{player.album.artist}}</p>
 </div>

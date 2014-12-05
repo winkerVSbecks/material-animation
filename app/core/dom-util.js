@@ -59,7 +59,7 @@ angular.module('materialApp.services')
     // Get the position of an
     // element within the body
     service.getAbsPos = R.compose(function(pos) {
-        pos.top -= body.scrollTop;
+        // pos.top -= body.scrollTop;
         return pos;
       },
       service.getPos);

@@ -13,9 +13,6 @@
   display: block;
   overflow: hidden;
 }
-.animate-view.ng-enter.ng-enter-active {
-
-}
 
 .animate-view.ng-leave {
   position: fixed;
@@ -25,69 +22,13 @@
   height: 100%;
   display: block;
   overflow: hidden;
-}
-.animate-view.ng-leave.ng-leave-active {
 
-}
-
-
-
-
-
-.expand-view {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: hidden;
-  transition: all $cubic 800ms;
+  .ui { visibility: hidden; }
 }
 
-
-.expand-view.ng-enter {
-  border-radius: 50%;
-  transform: scale3d(0, 0, 0);
+.animate-view.reverse.ng-enter {
+  z-index: 996;
 }
-.expand-view.ng-enter.ng-enter-active {
-  transform: scale3d(1, 1, 1);
-  border-radius: 0;
-}
-
-.expand-view.ng-leave {
-  transform: scale3d(1, 1, 1);
-}
-.expand-view.ng-leave.ng-leave-active {
-  transform: scale3d(1, 1, 1);
-}
-
-
-.contract-view {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: hidden;
-  transition: all $cubic 800ms;
-}
-
-.contract-view.ng-enter {
-  transform: scale3d(1, 1, 1);
-}
-.contract-view.ng-enter.ng-enter-active {
-  transform: scale3d(1, 1, 1);
-}
-
-.contract-view.ng-leave {
-  border-radius: 0;
-  transform: scale3d(1, 1, 1);
-  z-index: 999999;
-}
-.contract-view.ng-leave.ng-leave-active {
-  transform: scale3d(0, 0, 0);
-  border-radius: 50%;
-  z-index: 999999;
+.animate-view.reverse {
+  z-index: 997;
 }

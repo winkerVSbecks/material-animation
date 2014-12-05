@@ -28,3 +28,8 @@ angular.module('materialApp', [
         redirectTo: '/albums'
       });
 }])
+.config([
+    '$anchorScrollProvider',
+  function($anchorScrollProvider) {
+    $anchorScrollProvider.disableAutoScrolling();
+}]);

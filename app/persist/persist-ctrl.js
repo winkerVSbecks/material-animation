@@ -40,6 +40,8 @@ angular.module('materialApp.directives')
       elementClone = vm.element.cloneNode(true);
       elementClone.className += ' ' + id;
       domUtil.appendToBody(elementClone);
+
+      vm.element.style.visibility = 'hidden';
     };
 
     // Move the album cover from the grid to the player
